@@ -39,7 +39,6 @@ String getTimeSinceStart(const time_t& difference) {
   uint8_t days = duration / 24;
   String output = String(days) + ":" + String(hours) + ":" + String(minutes) +
                   ":" + String(seconds);
-  printDebug(output);
   return output;
 }
 
@@ -59,7 +58,7 @@ void setup() {
   start_time = now();
   Serial.begin(9600);
   Serial.println(
-      "Reading Number, Reading Time, "
+      "Reading Number, Reading Time [d:h:m:s], "
       "A0 Value, A1 Value, A2 Value, A3 Value, "
       "A4 Value, A5 Value, A6 Value, A7 Value");
 }
