@@ -47,7 +47,7 @@ void logAnalogValues() {
   String output = String(current_reading_number) + ", ";
   output += getTimeSinceStart(current_time - start_time);
   for (uint8_t i = 0; i < number_of_analog_pins; i++) {
-    output += ", " + String(currnet_analog_readings[i]);
+    output += ", " + String(map(currnet_analog_readings[i], 0, 1023, 0, 100));
   }
   output += "\n";
   current_reading_number++;
@@ -57,6 +57,7 @@ void logAnalogValues() {
 void setup() {
   start_time = now();
   Serial.begin(9600);
+  analogReference(EXTERNAL);
   Serial.println(
       "Reading Number, Reading Time [d:h:m:s], "
       "A0 Value, A1 Value, A2 Value, A3 Value, "
